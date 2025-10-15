@@ -307,8 +307,10 @@ def obter_destaques_emendas(id_proposicao):
 
 def obter_pareceres_substitutivos_votos(id_proposicao):
     """
-    Captura SOMENTE PRLP/PRLE da página e retorna APENAS o mais recente (maior número).
-    Corrige o link com urljoin e remove 'Inteiro teor' do texto de descrição.
+    Captura SOMENTE PRLP e PRLE. 
+    - Se só houver PRLP -> retorna apenas o PRLP mais recente (maior número).
+    - Se houver PRLP e PRLE -> retorna o PRLP mais recente e o PRLE mais recente.
+    O link aponta para a página de histórico da proposição (estável).
     """
     ck = f"pareceres:{id_proposicao}"
     c = _cache_get(ck)
@@ -326,23 +328,23 @@ def obter_pareceres_substitutivos_votos(id_proposicao):
         def normtxt(s):
             return (s or "").strip()
 
-        candidatos = []
+        candidatos = []  # [{"tipo": "PRLP"/"PRLE", "numero": int, ...}]
         for tabela in soup.find_all("table"):
             ths = [normtxt(th.get_text(" ", strip=True)).lower() for th in tabela.find_all("th")]
             if not ths:
                 continue
 
-            def find_idx(substr):
+            def idx_contains(substr):
                 for i, h in enumerate(ths):
                     if substr in h:
                         return i
                 return -1
 
-            idx_psv  = find_idx("pareceres")
-            idx_tipo = find_idx("tipo de propos")
-            idx_data = find_idx("data de apres")
-            idx_aut  = find_idx("autor")
-            idx_desc = find_idx("descri")
+            idx_psv  = idx_contains("pareceres")
+            idx_tipo = idx_contains("tipo de propos")
+            idx_data = idx_contains("data de apres")
+            idx_aut  = idx_contains("autor")
+            idx_desc = idx_contains("descri")
 
             if min(idx_psv, idx_tipo, idx_data, idx_aut, idx_desc) < 0 and len(ths) >= 5:
                 idx_psv, idx_tipo, idx_data, idx_aut, idx_desc = 0, 1, 2, 3, 4
@@ -364,50 +366,64 @@ def obter_pareceres_substitutivos_votos(id_proposicao):
                 m = re.search(r"\b(PRL[PE])\s*(\d+)\b", txt_psv)
                 if not m:
                     continue
-                tipo_tag = m.group(1)   # PRLP ou PRLE
-                numero   = int(m.group(2))
+
+                tipo_tag = m.group(1)   # "PRLP" ou "PRLE"
                 if tipo_tag not in ("PRLP", "PRLE"):
                     continue
 
-                data_ap = normtxt(col_data.get_text(" ", strip=True)) or "N/D"
-                autor   = normtxt(col_aut.get_text(" ", strip=True)) or "N/D"
+                numero   = int(m.group(2))
+                data_ap  = normtxt(col_data.get_text(" ", strip=True)) or "N/D"
+                autor    = normtxt(col_aut.get_text(" ", strip=True)) or "N/D"
 
-                # descrição + link (no MESMO <td>)
+                # descrição (limpa qualquer "Inteiro teor" que venha junto)
                 descricao_raw = normtxt(col_desc.get_text(" ", strip=True)) or "Descrição não disponível"
-                descricao = descricao_raw.replace("Inteiro teor", "").strip()
-                link_inteiro = f"https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao={id_proposicao}"
-                
+                descricao = descricao_raw.replace("Inteiro teor", "").strip() or "Descrição não disponível"
+
+                # Link estável para a página de histórico da proposição
+                link_hist = f"https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao={id_proposicao}"
 
                 candidatos.append({
-                    "tipo_proposicao": f"{tipo_tag} {numero}",
+                    "tipo": tipo_tag,
                     "numero": numero,
+                    "tipo_proposicao": f"{tipo_tag} {numero}",
                     "data_apresentacao": data_ap,
                     "autor": autor,
-                    "descricao": descricao if descricao else "Descrição não disponível",
-                    "link_inteiro_teor": link_inteiro
+                    "descricao": descricao,
+                    "link_inteiro_teor": link_hist,
                 })
 
-        logger.info(f"pareceres {id_proposicao}: candidatos PRLP/PRLE = {len(candidatos)}")
+        logger.info(f"pareceres {id_proposicao}: PRLP/PRLE encontrados = {len(candidatos)}")
 
         if not candidatos:
             res = {"tem_pareceres": False, "pareceres_substitutivos_votos": [], "erro": "Nenhum PRLP/PRLE encontrado"}
             _cache_set(ck, res)
             return res
 
-        # PR mais recente = maior número
-        mais_recente = max(candidatos, key=lambda x: x["numero"])
+        # Separa por tipo e pega o de maior número em cada tipo
+        prlp = [c for c in candidatos if c["tipo"] == "PRLP"]
+        prle = [c for c in candidatos if c["tipo"] == "PRLE"]
 
-        res = {
-            "tem_pareceres": True,
-            "pareceres_substitutivos_votos": [ParecerSubstitutivoVoto(
-                tipo_proposicao=mais_recente["tipo_proposicao"],
-                data_apresentacao=mais_recente["data_apresentacao"],
-                autor=mais_recente["autor"],
-                descricao=mais_recente["descricao"],
-                link_inteiro_teor=mais_recente["link_inteiro_teor"],
-            )],
-            "erro": None
-        }
+        selecionados = []
+        if prlp:
+            best_prlp = max(prlp, key=lambda x: x["numero"])
+            selecionados.append(best_prlp)
+        if prle:
+            best_prle = max(prle, key=lambda x: x["numero"])
+            selecionados.append(best_prle)
+
+        # Converte para o modelo esperado (lista de objetos/ dicts)
+        items = [
+            ParecerSubstitutivoVoto(
+                tipo_proposicao=sel["tipo_proposicao"],
+                data_apresentacao=sel["data_apresentacao"],
+                autor=sel["autor"],
+                descricao=sel["descricao"],
+                link_inteiro_teor=sel["link_inteiro_teor"],
+            )
+            for sel in selecionados
+        ]
+
+        res = {"tem_pareceres": len(items) > 0, "pareceres_substitutivos_votos": items, "erro": None}
         _cache_set(ck, res)
         return res
 
@@ -415,6 +431,7 @@ def obter_pareceres_substitutivos_votos(id_proposicao):
         res = {"tem_pareceres": False, "pareceres_substitutivos_votos": [], "erro": f"Erro no scraping: {e}"}
         _cache_set(ck, res)
         return res
+
 
 
 def obter_procedimentos_regimentais(id_proposicao):
