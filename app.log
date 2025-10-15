@@ -1,0 +1,1186 @@
+2025-10-15 18:02:50,972 - WARNING -  * Debugger is active!
+2025-10-15 18:02:50,982 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:04:46,204 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:04:46,205 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:04:46,209 - INFO -  * Restarting with stat
+2025-10-15 18:04:48,353 - WARNING -  * Debugger is active!
+2025-10-15 18:04:48,368 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:04:50,128 - INFO - Buscando eventos: https://dadosabertos.camara.leg.br/api/v2/eventos com params {'idOrgao': 180, 'dataInicio': '2025-10-15', 'dataFim': '2025-10-15', 'ordem': 'ASC', 'ordenarPor': 'dataHoraInicio'}
+2025-10-15 18:04:50,139 - DEBUG - Starting new HTTPS connection (1): dadosabertos.camara.leg.br:443
+2025-10-15 18:04:50,187 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/eventos?idOrgao=180&dataInicio=2025-10-15&dataFim=2025-10-15&ordem=ASC&ordenarPor=dataHoraInicio HTTP/11" 200 None
+2025-10-15 18:04:50,187 - INFO - Status HTTP: 200, Content-Type: application/json, resposta: {"dados":[{"id":78897,"uri":"https://dadosabertos.camara.leg.br/api/v2/eventos/78897","dataHoraInicio":"2025-10-15T11:16","dataHoraFim":"2025-10-15T13:01","situacao":"Encerrada","descricaoTipo":"Sessã
+2025-10-15 18:04:50,188 - INFO - Resposta parseada como JSON
+2025-10-15 18:04:50,198 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/eventos/79805/pauta HTTP/11" 200 None
+2025-10-15 18:04:50,199 - INFO - Pauta evento 79805: Status HTTP 200
+2025-10-15 18:04:50,203 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2564763 HTTP/11" 200 None
+2025-10-15 18:04:50,204 - INFO - Detalhes proposição 2564763: Status HTTP 200
+2025-10-15 18:04:50,204 - INFO - Scraping destaques para ID 2564763: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2564763
+2025-10-15 18:04:50,206 - DEBUG - Starting new HTTPS connection (1): www.camara.leg.br:443
+2025-10-15 18:04:50,479 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2564763 HTTP/11" 200 None
+2025-10-15 18:04:50,481 - INFO - Status HTTP: 200, tamanho resposta: 34871
+2025-10-15 18:04:50,499 - INFO - Parser lxml funcionou
+2025-10-15 18:04:50,500 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:50,500 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Destaques e Emendas Aglutinativas</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+     
+2025-10-15 18:04:50,501 - INFO - Scraping procedimentos para ID 2564763: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2564763
+2025-10-15 18:04:50,708 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2564763 HTTP/11" 200 None
+2025-10-15 18:04:50,709 - INFO - Status HTTP: 200, tamanho resposta: 34925
+2025-10-15 18:04:50,728 - INFO - Parser lxml funcionou
+2025-10-15 18:04:50,729 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:50,729 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Requerimentos Procedimentais</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+          
+2025-10-15 18:04:50,735 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2564763/autores HTTP/11" 200 None
+2025-10-15 18:04:50,735 - INFO - Autores proposição 2564763: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:50,736 - DEBUG - Autores proposição 2564763 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/orgaos/100313', 'nome': 'Partido Liberal', 'codTipo': 81009, 'tipo': 'Partido Político', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:50,736 - DEBUG - Resultado autores proposição 2564763: {'autores': [{'nome': 'Partido Liberal'}], 'tem_mais_autores': False}
+2025-10-15 18:04:50,736 - INFO - Scraping pareceres para ID 2564763: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2564763
+2025-10-15 18:04:50,775 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2564763 HTTP/11" 200 None
+2025-10-15 18:04:50,776 - INFO - Status HTTP: 200, tamanho resposta: 37319
+2025-10-15 18:04:50,795 - INFO - Parser lxml funcionou
+2025-10-15 18:04:50,796 - INFO - Número de tabelas encontradas: 1
+2025-10-15 18:04:50,796 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:50,796 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:50,797 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:50,797 - INFO - Item da pauta processado: 2564763 - SAP 2/2025
+2025-10-15 18:04:50,874 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2194396 HTTP/11" 200 None
+2025-10-15 18:04:50,875 - INFO - Detalhes proposição 2194396: Status HTTP 200
+2025-10-15 18:04:50,875 - INFO - Scraping destaques para ID 2194396: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2194396
+2025-10-15 18:04:51,341 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2194396 HTTP/11" 200 None
+2025-10-15 18:04:51,342 - INFO - Status HTTP: 200, tamanho resposta: 35009
+2025-10-15 18:04:51,351 - INFO - Parser lxml funcionou
+2025-10-15 18:04:51,352 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:51,352 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Destaques e Emendas Aglutinativas</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+     
+2025-10-15 18:04:51,352 - INFO - Scraping procedimentos para ID 2194396: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2194396
+2025-10-15 18:04:51,755 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2194396 HTTP/11" 200 None
+2025-10-15 18:04:51,756 - INFO - Status HTTP: 200, tamanho resposta: 34974
+2025-10-15 18:04:51,767 - INFO - Parser lxml funcionou
+2025-10-15 18:04:51,768 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:51,769 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Requerimentos Procedimentais</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+          
+2025-10-15 18:04:51,781 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2194396/autores HTTP/11" 200 None
+2025-10-15 18:04:51,782 - INFO - Autores proposição 2194396: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:51,782 - DEBUG - Autores proposição 2194396 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/204562', 'nome': 'Edilázio Júnior', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:51,782 - DEBUG - Resultado autores proposição 2194396: {'autores': [{'nome': 'Edilázio Júnior'}], 'tem_mais_autores': False}
+2025-10-15 18:04:51,782 - INFO - Scraping pareceres para ID 2194396: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2194396
+2025-10-15 18:04:52,309 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2194396 HTTP/11" 200 None
+2025-10-15 18:04:52,310 - INFO - Status HTTP: 200, tamanho resposta: 48768
+2025-10-15 18:04:52,336 - INFO - Parser lxml funcionou
+2025-10-15 18:04:52,336 - INFO - Número de tabelas encontradas: 5
+2025-10-15 18:04:52,337 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,337 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:52,337 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,338 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:52,338 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,338 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:52,338 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,339 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:52,339 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,339 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:52,339 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:52,340 - INFO - Item da pauta processado: 2194396 - PL 1556/2019
+2025-10-15 18:04:52,347 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2372913 HTTP/11" 200 None
+2025-10-15 18:04:52,347 - INFO - Detalhes proposição 2372913: Status HTTP 200
+2025-10-15 18:04:52,347 - INFO - Scraping destaques para ID 2372913: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2372913
+2025-10-15 18:04:52,446 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2372913 HTTP/11" 200 None
+2025-10-15 18:04:52,456 - INFO - Status HTTP: 200, tamanho resposta: 36617
+2025-10-15 18:04:52,487 - INFO - Parser lxml funcionou
+2025-10-15 18:04:52,492 - INFO - Número de tabelas encontradas: 1
+2025-10-15 18:04:52,510 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,523 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:52,528 - INFO - Destaque/Emenda extraído: DTQ 1 - 161, I - Destaque para Votação em Separado do artigo 4º do Substitutivo para fins de supressão.
+2025-10-15 18:04:52,530 - INFO - Destaque/Emenda extraído: VN 24 - 161, II - (VOTAÇÃO NOMINAL)
+2025-10-15 18:04:52,532 - INFO - Scraping procedimentos para ID 2372913: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2372913
+2025-10-15 18:04:52,884 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2372913 HTTP/11" 200 None
+2025-10-15 18:04:52,889 - INFO - Status HTTP: 200, tamanho resposta: 49215
+2025-10-15 18:04:52,933 - INFO - Parser lxml funcionou
+2025-10-15 18:04:52,934 - INFO - Número de tabelas encontradas: 4
+2025-10-15 18:04:52,935 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,937 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,938 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,938 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,939 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,939 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,939 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:52,940 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,940 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:52,941 - INFO - Procedimento extraído: REQ VN 
+                            2 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA DISCUSSÃO - PL 3444/2023
+2025-10-15 18:04:52,941 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:52,942 - INFO - Procedimento extraído: REQ 2 - Requerimento de Adiamento da Discussão Matéria Urgente - PL 3444/2023
+2025-10-15 18:04:52,942 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,942 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:52,943 - INFO - Procedimento extraído: REQ VN 
+                            2 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA VOTAÇÃO - PL 3444/2023
+2025-10-15 18:04:52,943 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:52,943 - INFO - Procedimento extraído: REQ 2 - Requerimento de Adiamento da Votação Matéria Urgente - PL 3444/2023
+2025-10-15 18:04:52,943 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:52,944 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:52,944 - INFO - Procedimento extraído: REQ 2 - Requerimento de Votação Nominal - PL 3444/2023
+2025-10-15 18:04:52,974 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2372913/autores HTTP/11" 200 None
+2025-10-15 18:04:52,976 - INFO - Autores proposição 2372913: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:52,977 - DEBUG - Autores proposição 2372913 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/139285', 'nome': 'Lídice da Mata', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:52,977 - DEBUG - Resultado autores proposição 2372913: {'autores': [{'nome': 'Lídice da Mata'}], 'tem_mais_autores': False}
+2025-10-15 18:04:52,978 - INFO - Scraping pareceres para ID 2372913: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2372913
+2025-10-15 18:04:53,165 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2372913 HTTP/11" 200 None
+2025-10-15 18:04:53,167 - INFO - Status HTTP: 200, tamanho resposta: 44304
+2025-10-15 18:04:53,184 - INFO - Parser lxml funcionou
+2025-10-15 18:04:53,185 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:53,185 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:53,185 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:53,185 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:53,186 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:53,186 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:53,187 - INFO - Item da pauta processado: 2372913 - PL 3444/2023
+2025-10-15 18:04:53,191 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2406231 HTTP/11" 200 None
+2025-10-15 18:04:53,191 - INFO - Detalhes proposição 2406231: Status HTTP 200
+2025-10-15 18:04:53,192 - INFO - Scraping destaques para ID 2406231: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2406231
+2025-10-15 18:04:53,943 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2406231 HTTP/11" 200 None
+2025-10-15 18:04:53,944 - INFO - Status HTTP: 200, tamanho resposta: 40299
+2025-10-15 18:04:53,965 - INFO - Parser lxml funcionou
+2025-10-15 18:04:53,966 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:53,966 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:53,967 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:53,967 - INFO - Destaque/Emenda extraído: DTQ 3 - 161, I - Destaque para Votação em Separado da alínea "e" do § 3° do art. 1° da Lei n. 14.643/2023, incluído pelo art. 7° do Substitutivo apresentado ao PL 5669/2023.
+2025-10-15 18:04:53,967 - INFO - Destaque/Emenda extraído: VN 59 - 161, II - (VOTAÇÃO NOMINAL)
+2025-10-15 18:04:53,968 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:53,968 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:53,968 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:53,968 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:53,969 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:53,969 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:53,969 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:53,970 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:53,970 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:53,970 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:53,970 - INFO - Scraping procedimentos para ID 2406231: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2406231
+2025-10-15 18:04:54,634 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2406231 HTTP/11" 200 None
+2025-10-15 18:04:54,639 - INFO - Status HTTP: 200, tamanho resposta: 53512
+2025-10-15 18:04:54,655 - INFO - Parser lxml funcionou
+2025-10-15 18:04:54,656 - INFO - Número de tabelas encontradas: 4
+2025-10-15 18:04:54,656 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:54,657 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:54,657 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:54,657 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:54,658 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,658 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,658 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,658 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:54,658 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,659 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,659 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,659 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:54,659 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:54,660 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,660 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,660 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,660 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:54,661 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,661 - DEBUG - Linha ignorada (situação != Em tramitação): Não Admitido
+2025-10-15 18:04:54,661 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,661 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:54,661 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:54,662 - INFO - Procedimento extraído: REQ 1 - Requerimento de Votação Nominal - PL 5669/2023
+2025-10-15 18:04:54,662 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,662 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:54,662 - INFO - Procedimento extraído: REQ 4 - Requerimento de Votação Nominal - PL 5669/2023
+2025-10-15 18:04:54,663 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:54,669 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2406231/autores HTTP/11" 200 None
+2025-10-15 18:04:54,671 - INFO - Autores proposição 2406231: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:54,672 - DEBUG - Autores proposição 2406231 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220576', 'nome': 'Alfredo Gaspar', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 8, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220551', 'nome': 'Franciane Bayer', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 2, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/214694', 'nome': 'Jorge Goetten', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 4, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/204410', 'nome': 'Luisa Canziani', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220580', 'nome': 'Professora Goreth', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 5, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220586', 'nome': 'Rafael Brito', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 3, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220641', 'nome': 'Rodrigo Gambale', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 7, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/104552', 'nome': 'Socorro Neri', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 10, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/204534', 'nome': 'Tabata Amaral', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 6, 'proponente': 1}, {'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220598', 'nome': 'Tarcísio Motta', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 9, 'proponente': 1}]
+2025-10-15 18:04:54,673 - DEBUG - Resultado autores proposição 2406231: {'autores': [{'nome': 'Alfredo Gaspar'}, {'nome': 'Franciane Bayer'}], 'tem_mais_autores': True}
+2025-10-15 18:04:54,674 - INFO - Scraping pareceres para ID 2406231: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2406231
+2025-10-15 18:04:54,792 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2406231 HTTP/11" 200 None
+2025-10-15 18:04:54,795 - INFO - Status HTTP: 200, tamanho resposta: 41047
+2025-10-15 18:04:54,809 - INFO - Parser lxml funcionou
+2025-10-15 18:04:54,810 - INFO - Número de tabelas encontradas: 1
+2025-10-15 18:04:54,810 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:54,810 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:54,810 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:54,811 - INFO - Item da pauta processado: 2406231 - PL 5669/2023
+2025-10-15 18:04:54,814 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2438687 HTTP/11" 200 None
+2025-10-15 18:04:54,814 - INFO - Detalhes proposição 2438687: Status HTTP 200
+2025-10-15 18:04:54,815 - INFO - Scraping destaques para ID 2438687: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2438687
+2025-10-15 18:04:55,028 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2438687 HTTP/11" 200 None
+2025-10-15 18:04:55,028 - INFO - Status HTTP: 200, tamanho resposta: 37834
+2025-10-15 18:04:55,047 - INFO - Parser lxml funcionou
+2025-10-15 18:04:55,048 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:55,048 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,049 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:55,049 - INFO - Destaque/Emenda extraído: DTQ 2 - 161, I - Destaque para Votação em Separado do art. 27 do Substitutivo, apresentado ao PL 2225/2024.
+2025-10-15 18:04:55,049 - INFO - Destaque/Emenda extraído: VN 9 - 161, II - (VOTAÇÃO NOMINAL)
+2025-10-15 18:04:55,049 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,050 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:55,050 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,050 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,050 - INFO - Scraping procedimentos para ID 2438687: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2438687
+2025-10-15 18:04:55,257 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2438687 HTTP/11" 200 None
+2025-10-15 18:04:55,258 - INFO - Status HTTP: 200, tamanho resposta: 44389
+2025-10-15 18:04:55,284 - INFO - Parser lxml funcionou
+2025-10-15 18:04:55,284 - INFO - Número de tabelas encontradas: 4
+2025-10-15 18:04:55,285 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,285 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:55,285 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:55,286 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:55,286 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:55,287 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,287 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,288 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,288 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,288 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,289 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,289 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,289 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:55,290 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Requerimentos Procedimentais</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+          
+2025-10-15 18:04:55,302 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2438687/autores HTTP/11" 200 None
+2025-10-15 18:04:55,303 - INFO - Autores proposição 2438687: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:55,303 - DEBUG - Autores proposição 2438687 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/74856', 'nome': 'Laura Carneiro', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:55,304 - DEBUG - Resultado autores proposição 2438687: {'autores': [{'nome': 'Laura Carneiro'}], 'tem_mais_autores': False}
+2025-10-15 18:04:55,304 - INFO - Scraping pareceres para ID 2438687: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2438687
+2025-10-15 18:04:55,508 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2438687 HTTP/11" 200 None
+2025-10-15 18:04:55,510 - INFO - Status HTTP: 200, tamanho resposta: 47422
+2025-10-15 18:04:55,523 - INFO - Parser lxml funcionou
+2025-10-15 18:04:55,523 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:55,523 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,524 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:55,524 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,524 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:55,525 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:55,525 - INFO - Item da pauta processado: 2438687 - PL 2225/2024
+2025-10-15 18:04:55,528 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2454687 HTTP/11" 200 None
+2025-10-15 18:04:55,528 - INFO - Detalhes proposição 2454687: Status HTTP 200
+2025-10-15 18:04:55,528 - INFO - Scraping destaques para ID 2454687: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2454687
+2025-10-15 18:04:55,613 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2454687 HTTP/11" 200 None
+2025-10-15 18:04:55,615 - INFO - Status HTTP: 200, tamanho resposta: 35009
+2025-10-15 18:04:55,643 - INFO - Parser lxml funcionou
+2025-10-15 18:04:55,644 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:55,645 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Destaques e Emendas Aglutinativas</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+     
+2025-10-15 18:04:55,645 - INFO - Scraping procedimentos para ID 2454687: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2454687
+2025-10-15 18:04:55,738 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2454687 HTTP/11" 200 None
+2025-10-15 18:04:55,741 - INFO - Status HTTP: 200, tamanho resposta: 39193
+2025-10-15 18:04:55,771 - INFO - Parser lxml funcionou
+2025-10-15 18:04:55,772 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:55,773 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,773 - INFO - Procedimento extraído: REQ VN 
+                            1 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA DISCUSSÃO - PL 3287/2024
+2025-10-15 18:04:55,773 - INFO - Procedimento extraído: REQ 1 - Requerimento de Adiamento da Discussão Matéria Urgente - PL 3287/2024
+2025-10-15 18:04:55,774 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:55,774 - INFO - Procedimento extraído: REQ VN 
+                            1 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA VOTAÇÃO - PL 3287/2024
+2025-10-15 18:04:55,775 - INFO - Procedimento extraído: REQ 1 - Requerimento de Adiamento da Votação Matéria Urgente - PL 3287/2024
+2025-10-15 18:04:55,778 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2454687/autores HTTP/11" 200 None
+2025-10-15 18:04:55,779 - INFO - Autores proposição 2454687: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:55,779 - DEBUG - Autores proposição 2454687 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220695', 'nome': 'Rogéria Santos', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:55,779 - DEBUG - Resultado autores proposição 2454687: {'autores': [{'nome': 'Rogéria Santos'}], 'tem_mais_autores': False}
+2025-10-15 18:04:55,780 - INFO - Scraping pareceres para ID 2454687: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2454687
+2025-10-15 18:04:56,608 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2454687 HTTP/11" 200 None
+2025-10-15 18:04:56,609 - INFO - Status HTTP: 200, tamanho resposta: 47301
+2025-10-15 18:04:56,628 - INFO - Parser lxml funcionou
+2025-10-15 18:04:56,629 - INFO - Número de tabelas encontradas: 4
+2025-10-15 18:04:56,629 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:56,629 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:56,630 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:56,630 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:56,630 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:56,631 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:56,631 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:56,631 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:56,631 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:56,632 - INFO - Item da pauta processado: 2454687 - PL 3287/2024
+2025-10-15 18:04:56,635 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2487987 HTTP/11" 200 None
+2025-10-15 18:04:56,636 - INFO - Detalhes proposição 2487987: Status HTTP 200
+2025-10-15 18:04:56,636 - INFO - Scraping destaques para ID 2487987: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2487987
+2025-10-15 18:04:56,872 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2487987 HTTP/11" 200 None
+2025-10-15 18:04:56,874 - INFO - Status HTTP: 200, tamanho resposta: 35009
+2025-10-15 18:04:56,893 - INFO - Parser lxml funcionou
+2025-10-15 18:04:56,894 - INFO - Número de tabelas encontradas: 0
+2025-10-15 18:04:56,894 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Destaques e Emendas Aglutinativas</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+     
+2025-10-15 18:04:56,895 - INFO - Scraping procedimentos para ID 2487987: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2487987
+2025-10-15 18:04:57,087 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2487987 HTTP/11" 200 None
+2025-10-15 18:04:57,089 - INFO - Status HTTP: 200, tamanho resposta: 43965
+2025-10-15 18:04:57,103 - INFO - Parser lxml funcionou
+2025-10-15 18:04:57,103 - INFO - Número de tabelas encontradas: 3
+2025-10-15 18:04:57,103 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,104 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:57,104 - INFO - Procedimento extraído: REQ VN 
+                            2 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA DISCUSSÃO - PL 4937/2024
+2025-10-15 18:04:57,104 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:57,105 - INFO - Procedimento extraído: REQ 2 - Requerimento de Adiamento da Discussão Matéria Urgente - PL 4937/2024
+2025-10-15 18:04:57,105 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,105 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:57,106 - INFO - Procedimento extraído: REQ VN 
+                            2 - (VOTAÇÃO NOMINAL) Requerimento de Votação Nomimal do ADIAMENTO DA VOTAÇÃO - PL 4937/2024
+2025-10-15 18:04:57,106 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:57,106 - INFO - Procedimento extraído: REQ 2 - Requerimento de Adiamento da Votação Matéria Urgente - PL 4937/2024
+2025-10-15 18:04:57,106 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,107 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:57,107 - INFO - Procedimento extraído: REQ 2 - Requerimento de Votação Nominal - PL 4937/2024
+2025-10-15 18:04:57,141 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2487987/autores HTTP/11" 200 None
+2025-10-15 18:04:57,142 - INFO - Autores proposição 2487987: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:57,142 - DEBUG - Autores proposição 2487987 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/orgaos/78', 'nome': 'Senado Federal - Comissão de Educação e Cultura', 'codTipo': 40000, 'tipo': 'Órgão do Poder Legislativo', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:57,142 - DEBUG - Resultado autores proposição 2487987: {'autores': [{'nome': 'Senado Federal - Comissão de Educação e Cultura'}], 'tem_mais_autores': False}
+2025-10-15 18:04:57,143 - INFO - Scraping pareceres para ID 2487987: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2487987
+2025-10-15 18:04:57,509 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2487987 HTTP/11" 200 None
+2025-10-15 18:04:57,512 - INFO - Status HTTP: 200, tamanho resposta: 40890
+2025-10-15 18:04:57,529 - INFO - Parser lxml funcionou
+2025-10-15 18:04:57,530 - INFO - Número de tabelas encontradas: 3
+2025-10-15 18:04:57,530 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,530 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:57,531 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,531 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:57,531 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,531 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:57,532 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:57,532 - INFO - Item da pauta processado: 2487987 - PL 4937/2024
+2025-10-15 18:04:57,536 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2502882 HTTP/11" 200 None
+2025-10-15 18:04:57,536 - INFO - Detalhes proposição 2502882: Status HTTP 200
+2025-10-15 18:04:57,536 - INFO - Scraping destaques para ID 2502882: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2502882
+2025-10-15 18:04:57,802 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2502882 HTTP/11" 200 None
+2025-10-15 18:04:57,803 - INFO - Status HTTP: 200, tamanho resposta: 38908
+2025-10-15 18:04:57,816 - INFO - Parser lxml funcionou
+2025-10-15 18:04:57,817 - INFO - Número de tabelas encontradas: 2
+2025-10-15 18:04:57,817 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,818 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:57,818 - INFO - Destaque/Emenda extraído: DTQ 3 - 161, I - Destaque para Votação em Separado do Parágrafo único do art. 5°-A da Lei n° 13.257/2016, incluído pelo art. 2° do Substitutivo, com fins de supressão.
+2025-10-15 18:04:57,818 - INFO - Destaque/Emenda extraído: VN 22 - 161, II - (VOTAÇÃO NOMINAL)
+2025-10-15 18:04:57,818 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:57,819 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:57,819 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:57,819 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:57,819 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:57,820 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:57,820 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:57,820 - INFO - Scraping procedimentos para ID 2502882: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2502882
+2025-10-15 18:04:58,606 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2502882 HTTP/11" 200 None
+2025-10-15 18:04:58,608 - INFO - Status HTTP: 200, tamanho resposta: 46227
+2025-10-15 18:04:58,622 - INFO - Parser lxml funcionou
+2025-10-15 18:04:58,623 - INFO - Número de tabelas encontradas: 4
+2025-10-15 18:04:58,623 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:58,624 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:58,624 - DEBUG - Linha ignorada (situação != Em tramitação): 15/10/2025
+2025-10-15 18:04:58,624 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:58,625 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:58,625 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:58,625 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:58,626 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:58,626 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:58,627 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:58,628 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:58,628 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:58,628 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:58,629 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:58,629 - DEBUG - Linha ignorada (situação != Em tramitação): Prejudicado
+2025-10-15 18:04:58,629 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:58,629 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Requerimentos Procedimentais</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+          
+2025-10-15 18:04:58,632 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2502882/autores HTTP/11" 200 None
+2025-10-15 18:04:58,633 - INFO - Autores proposição 2502882: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:58,633 - DEBUG - Autores proposição 2502882 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/deputados/220604', 'nome': 'Marcos Tavares', 'codTipo': 10000, 'tipo': 'Deputado(a)', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:58,633 - DEBUG - Resultado autores proposição 2502882: {'autores': [{'nome': 'Marcos Tavares'}], 'tem_mais_autores': False}
+2025-10-15 18:04:58,633 - INFO - Scraping pareceres para ID 2502882: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2502882
+2025-10-15 18:04:59,067 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2502882 HTTP/11" 200 None
+2025-10-15 18:04:59,068 - INFO - Status HTTP: 200, tamanho resposta: 43168
+2025-10-15 18:04:59,083 - INFO - Parser lxml funcionou
+2025-10-15 18:04:59,084 - INFO - Número de tabelas encontradas: 3
+2025-10-15 18:04:59,085 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,085 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,085 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,085 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,086 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,086 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,086 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:59,087 - INFO - Item da pauta processado: 2502882 - PL 1971/2025
+2025-10-15 18:04:59,090 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2538263 HTTP/11" 200 None
+2025-10-15 18:04:59,091 - INFO - Detalhes proposição 2538263: Status HTTP 200
+2025-10-15 18:04:59,091 - INFO - Scraping destaques para ID 2538263: https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=2538263
+2025-10-15 18:04:59,126 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/destaques.html?codOrgao=180&codProposicao=2538263 HTTP/11" 200 None
+2025-10-15 18:04:59,128 - INFO - Status HTTP: 200, tamanho resposta: 36499
+2025-10-15 18:04:59,138 - INFO - Parser lxml funcionou
+2025-10-15 18:04:59,139 - INFO - Número de tabelas encontradas: 1
+2025-10-15 18:04:59,139 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,140 - DEBUG - Linha ignorada (menos de 5 colunas): ['']
+2025-10-15 18:04:59,140 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:59,141 - DEBUG - Linha ignorada (situação != Em tramitação): Retirado
+2025-10-15 18:04:59,141 - DEBUG - HTML bruto (primeiros 1000 caracteres): <!DOCTYPE html>
+<html lang="pt-br">
+	<meta charset="UTF-8">
+<title>Destaques e Emendas Aglutinativas</title>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+            console.log("jQuery e o m&#233;todo 'on' est&#227;o dispon&#237;veis.");
+            
+     
+2025-10-15 18:04:59,142 - INFO - Scraping procedimentos para ID 2538263: https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2538263
+2025-10-15 18:04:59,382 - DEBUG - https://www.camara.leg.br:443 "GET /pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=2538263 HTTP/11" 200 None
+2025-10-15 18:04:59,382 - INFO - Status HTTP: 200, tamanho resposta: 36470
+2025-10-15 18:04:59,401 - INFO - Parser lxml funcionou
+2025-10-15 18:04:59,401 - INFO - Número de tabelas encontradas: 1
+2025-10-15 18:04:59,402 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,402 - INFO - Procedimento extraído: REQ 1 - Requerimento de Votação Nominal - PL 2810/2025
+2025-10-15 18:04:59,460 - DEBUG - https://dadosabertos.camara.leg.br:443 "GET /api/v2/proposicoes/2538263/autores HTTP/11" 200 None
+2025-10-15 18:04:59,460 - INFO - Autores proposição 2538263: Status HTTP 200, Content-Type: application/json
+2025-10-15 18:04:59,461 - DEBUG - Autores proposição 2538263 (raw): [{'uri': 'https://dadosabertos.camara.leg.br/api/v2/orgaos/78', 'nome': 'Senado Federal - Margareth Buzetti', 'codTipo': 40000, 'tipo': 'Órgão do Poder Legislativo', 'ordemAssinatura': 1, 'proponente': 1}]
+2025-10-15 18:04:59,461 - DEBUG - Resultado autores proposição 2538263: {'autores': [{'nome': 'Senado Federal - Margareth Buzetti'}], 'tem_mais_autores': False}
+2025-10-15 18:04:59,461 - INFO - Scraping pareceres para ID 2538263: https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2538263
+2025-10-15 18:04:59,854 - DEBUG - https://www.camara.leg.br:443 "GET /proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=2538263 HTTP/11" 200 None
+2025-10-15 18:04:59,855 - INFO - Status HTTP: 200, tamanho resposta: 45934
+2025-10-15 18:04:59,868 - INFO - Parser lxml funcionou
+2025-10-15 18:04:59,868 - INFO - Número de tabelas encontradas: 3
+2025-10-15 18:04:59,868 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,869 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,869 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,869 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,869 - INFO - Tabela encontrada: Sem Caption
+2025-10-15 18:04:59,870 - DEBUG - Cabeçalhos da tabela não correspondem aos esperados: ['pareceres, substitutivos e votos', 'tipo de proposicao', 'data de apresentação', 'autor', 'descrição']
+2025-10-15 18:04:59,870 - DEBUG - HTML bruto (primeiros 1000 caracteres): 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<!-- head Portal -->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="apple-itunes-app" content="app-id=1049343067" />
+  <meta name="google-play-app" content="app-id=br.leg.camara.infolegmovel" />
+  <script defer="defer" src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script defer="defer" src="https://www.camara.leg.br/tema/assets/vlibras-init.js"></script>
+  <script src="https://vlibras.gov.br/app/target/UnityLoader.js"></script>
+  <script>
+    const currentUrl = window.location.href;
+    if(!currentUrl.includes("/comissoes/")) {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof $ === "function" && typeof $.fn.on === "function") {
+       
+2025-10-15 18:04:59,870 - INFO - Item da pauta processado: 2538263 - PL 2810/2025
+2025-10-15 18:04:59,898 - INFO - 127.0.0.1 - - [15/Oct/2025 18:04:59] "GET / HTTP/1.1" 200 -
+2025-10-15 18:05:00,479 - INFO - 127.0.0.1 - - [15/Oct/2025 18:05:00] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:05:00,541 - INFO - 127.0.0.1 - - [15/Oct/2025 18:05:00] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:11:49,211 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 18:11:49,566 - INFO -  * Restarting with stat
+2025-10-15 18:11:51,712 - WARNING -  * Debugger is active!
+2025-10-15 18:11:51,721 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:15:00,436 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:15:00,437 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:15:00,441 - INFO -  * Restarting with stat
+2025-10-15 18:15:02,253 - WARNING -  * Debugger is active!
+2025-10-15 18:15:02,262 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:15:03,037 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:03] "GET / HTTP/1.1" 200 -
+2025-10-15 18:15:03,620 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:03] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:15:03,634 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:03] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:15:04,008 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:04] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:15:04,411 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:04] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:15:13,068 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:13] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:15:18,522 - INFO - 127.0.0.1 - - [15/Oct/2025 18:15:18] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:21:28,059 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:21:28,060 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:21:28,063 - INFO -  * Restarting with stat
+2025-10-15 18:21:30,090 - WARNING -  * Debugger is active!
+2025-10-15 18:21:30,100 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:21:30,676 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:30] "GET / HTTP/1.1" 200 -
+2025-10-15 18:21:31,006 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:21:31,030 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:31] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:21:31,359 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:31] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:21:32,144 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:32] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:37,979 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:37] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:44,384 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:44] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:21:47,476 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:47] "GET / HTTP/1.1" 200 -
+2025-10-15 18:21:47,577 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:21:47,724 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:47] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:47,908 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:47] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:48,090 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:48] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:21:48,406 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:48] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:21:50,370 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:50] "GET / HTTP/1.1" 200 -
+2025-10-15 18:21:50,679 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:21:50,779 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:50] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:51,009 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:51] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:21:51,108 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:51] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:21:51,426 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:51] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:21:53,036 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:53] "GET /api/proposicao/2438687/situacao HTTP/1.1" 200 -
+2025-10-15 18:21:56,990 - INFO - 127.0.0.1 - - [15/Oct/2025 18:21:56] "GET /api/proposicao/2438687/situacao HTTP/1.1" 200 -
+2025-10-15 18:22:00,908 - INFO - 127.0.0.1 - - [15/Oct/2025 18:22:00] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:23:53,671 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:53] "GET / HTTP/1.1" 200 -
+2025-10-15 18:23:53,871 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:23:53,922 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:53] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:23:54,201 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:54] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:23:54,473 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:54] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:23:54,805 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:54] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:23:59,475 - INFO - 127.0.0.1 - - [15/Oct/2025 18:23:59] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:24:10,207 - INFO - 127.0.0.1 - - [15/Oct/2025 18:24:10] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:25:42,087 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 18:25:42,385 - INFO -  * Restarting with stat
+2025-10-15 18:25:44,471 - WARNING -  * Debugger is active!
+2025-10-15 18:25:44,482 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:26:12,093 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:26:12,094 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:26:12,096 - INFO -  * Restarting with stat
+2025-10-15 18:26:13,953 - WARNING -  * Debugger is active!
+2025-10-15 18:26:13,962 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:26:20,837 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:26:20,838 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:26:20,842 - INFO -  * Restarting with stat
+2025-10-15 18:26:22,681 - WARNING -  * Debugger is active!
+2025-10-15 18:26:22,690 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:26:23,271 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:23] "GET / HTTP/1.1" 200 -
+2025-10-15 18:26:23,969 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:23] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:26:23,980 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:23] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:26:24,257 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:24] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:26:24,523 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:24] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:26:25,105 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:25] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:26:28,256 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:28] "GET / HTTP/1.1" 200 -
+2025-10-15 18:26:28,453 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:26:28,506 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:28] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:26:28,792 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:28] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:26:29,022 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:29] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:26:29,339 - INFO - 127.0.0.1 - - [15/Oct/2025 18:26:29] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:27:18,414 - INFO - 127.0.0.1 - - [15/Oct/2025 18:27:18] "GET /api/eventos/2025-10-14 HTTP/1.1" 200 -
+2025-10-15 18:27:18,477 - INFO - 127.0.0.1 - - [15/Oct/2025 18:27:18] "GET /api/pauta/2025-10-14 HTTP/1.1" 200 -
+2025-10-15 18:27:21,251 - INFO - 127.0.0.1 - - [15/Oct/2025 18:27:21] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:27:21,574 - INFO - 127.0.0.1 - - [15/Oct/2025 18:27:21] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:27:58,582 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:27:58,583 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:27:58,586 - INFO -  * Restarting with stat
+2025-10-15 18:28:00,400 - WARNING -  * Debugger is active!
+2025-10-15 18:28:00,409 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:28:00,919 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:00] "GET / HTTP/1.1" 200 -
+2025-10-15 18:28:00,925 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:00] "GET / HTTP/1.1" 200 -
+2025-10-15 18:28:01,124 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:01] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:28:01,274 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:01] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:28:01,733 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:01] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:28:01,825 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:01] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:28:02,317 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:02] "GET / HTTP/1.1" 200 -
+2025-10-15 18:28:02,767 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:02] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:28:02,768 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:02] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:28:03,022 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:03] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:28:03,221 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:03] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:28:03,367 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:03] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:28:03,977 - INFO - 127.0.0.1 - - [15/Oct/2025 18:28:03] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:36:04,202 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 18:36:04,530 - INFO -  * Restarting with stat
+2025-10-15 18:36:09,455 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:36:09,456 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:36:09,459 - INFO -  * Restarting with stat
+2025-10-15 18:36:11,267 - WARNING -  * Debugger is active!
+2025-10-15 18:36:11,335 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:36:12,743 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:12] "GET / HTTP/1.1" 200 -
+2025-10-15 18:36:13,052 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:36:13,174 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:13] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:36:13,491 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:13] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:36:13,666 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:13] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:36:13,996 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 18:36:14,350 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 18:36:14,716 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 18:36:15,462 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 18:36:17,202 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 18:36:17,893 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 18:36:18,277 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 18:36:18,805 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 18:36:19,534 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 18:36:20,102 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 18:36:20,102 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:20] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:36:22,942 - INFO - 127.0.0.1 - - [15/Oct/2025 18:36:22] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:38:19,837 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:19] "GET / HTTP/1.1" 200 -
+2025-10-15 18:38:19,960 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:38:20,101 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:20] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:38:20,348 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:20] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:38:20,825 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:20] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:38:20,831 - INFO - 127.0.0.1 - - [15/Oct/2025 18:38:20] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:39:01,551 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "GET / HTTP/1.1" 200 -
+2025-10-15 18:39:01,684 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:39:01,684 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:39:01,729 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:01,737 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:39:01,760 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:01] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:02,329 - INFO - 127.0.0.1 - - [15/Oct/2025 18:39:02] "GET /api/eventos/2025-10-14 HTTP/1.1" 200 -
+2025-10-15 18:39:03,678 - INFO - evento 79765: itens na pauta = 29
+2025-10-15 18:39:03,972 - INFO - pareceres 2344900: candidatos PRLP/PRLE = 0
+2025-10-15 18:39:04,648 - INFO - pareceres 2349629: candidatos PRLP/PRLE = 1
+2025-10-15 18:39:05,243 - INFO - pareceres 2409088: candidatos PRLP/PRLE = 1
+2025-10-15 18:39:05,555 - INFO - pareceres 2416731: candidatos PRLP/PRLE = 1
+2025-10-15 18:39:05,878 - INFO - pareceres 2477362: candidatos PRLP/PRLE = 2
+2025-10-15 18:39:06,078 - INFO - pareceres 2571589: candidatos PRLP/PRLE = 0
+2025-10-15 18:39:06,365 - INFO - pareceres 2485355: candidatos PRLP/PRLE = 2
+2025-10-15 18:39:06,560 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "GET / HTTP/1.1" 200 -
+2025-10-15 18:39:06,594 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:39:06,602 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:39:06,612 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:06,618 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:39:06,622 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:06] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:06,652 - INFO - pareceres 2571618: candidatos PRLP/PRLE = 0
+2025-10-15 18:39:06,922 - INFO - pareceres 2571638: candidatos PRLP/PRLE = 0
+2025-10-15 18:39:07,606 - INFO - pareceres 2517547: candidatos PRLP/PRLE = 0
+2025-10-15 18:39:07,607 - INFO - 127.0.0.1 - - [15/Oct/2025 18:39:07] "GET /api/pauta/2025-10-14 HTTP/1.1" 200 -
+2025-10-15 18:39:08,833 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:08] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:08,848 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:08] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:13,818 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:13] "GET /api/proposicao/2564763/situacao HTTP/1.1" 200 -
+2025-10-15 18:39:14,714 - INFO - 127.0.0.1 - - [15/Oct/2025 18:39:14] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:15,040 - INFO - 127.0.0.1 - - [15/Oct/2025 18:39:15] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:39:25,710 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:25] "GET /api/proposicao/2194396/situacao HTTP/1.1" 200 -
+2025-10-15 18:39:49,152 - INFO - 10.110.9.121 - - [15/Oct/2025 18:39:49] "GET /api/proposicao/2372913/situacao HTTP/1.1" 200 -
+2025-10-15 18:40:10,134 - INFO - 127.0.0.1 - - [15/Oct/2025 18:40:10] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:40:28,739 - INFO - 10.110.9.121 - - [15/Oct/2025 18:40:28] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:40:59,133 - INFO - 10.110.9.121 - - [15/Oct/2025 18:40:59] "GET /api/proposicao/2438687/situacao HTTP/1.1" 200 -
+2025-10-15 18:41:14,738 - INFO - 10.110.9.121 - - [15/Oct/2025 18:41:14] "GET /api/proposicao/2454687/situacao HTTP/1.1" 200 -
+2025-10-15 18:43:21,322 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 18:43:21,679 - INFO -  * Restarting with stat
+2025-10-15 18:43:23,684 - WARNING -  * Debugger is active!
+2025-10-15 18:43:23,695 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:43:32,064 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:43:32,065 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:43:32,068 - INFO -  * Restarting with stat
+2025-10-15 18:43:34,020 - WARNING -  * Debugger is active!
+2025-10-15 18:43:34,030 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:43:35,991 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:35] "GET / HTTP/1.1" 200 -
+2025-10-15 18:43:36,298 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:43:36,423 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:36] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:43:36,482 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:36] "GET / HTTP/1.1" 200 -
+2025-10-15 18:43:36,756 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:36] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:43:36,964 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:43:36,966 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:36] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:43:36,989 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:36] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:43:37,018 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:37] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:43:37,036 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 18:43:37,213 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 18:43:37,528 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:37] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:43:37,695 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 18:43:37,843 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 18:43:37,999 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 18:43:38,055 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 18:43:38,421 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 18:43:38,703 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 18:43:38,708 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 18:43:39,021 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 18:43:39,225 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 18:43:39,531 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 18:43:39,570 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 18:43:39,836 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 18:43:40,132 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 18:43:40,133 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:40] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:43:40,249 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 18:43:40,250 - INFO - 10.110.9.121 - - [15/Oct/2025 18:43:40] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:43:46,946 - INFO - 127.0.0.1 - - [15/Oct/2025 18:43:46] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:49:42,128 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 18:49:42,276 - INFO -  * Restarting with stat
+2025-10-15 18:49:47,734 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:49:47,735 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:49:47,738 - INFO -  * Restarting with stat
+2025-10-15 18:49:49,561 - WARNING -  * Debugger is active!
+2025-10-15 18:49:49,570 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:49:50,104 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:50] "GET / HTTP/1.1" 200 -
+2025-10-15 18:49:50,323 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:50] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:49:50,464 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:50] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:49:51,133 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:51] "GET / HTTP/1.1" 200 -
+2025-10-15 18:49:51,345 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:51] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:49:51,345 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:51] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:49:51,684 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:51] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:49:52,001 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 18:49:52,030 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:52] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:49:52,237 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 18:49:52,717 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 18:49:53,386 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 18:49:54,385 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 18:49:54,852 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 18:49:56,064 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 18:49:56,469 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 18:49:57,279 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 18:49:57,566 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 18:49:57,567 - INFO - 127.0.0.1 - - [15/Oct/2025 18:49:57] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:50:00,307 - INFO - 127.0.0.1 - - [15/Oct/2025 18:50:00] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:50:51,401 - INFO - 127.0.0.1 - - [15/Oct/2025 18:50:51] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:50:53,940 - INFO - 127.0.0.1 - - [15/Oct/2025 18:50:53] "GET /api/proposicao/2372913/situacao HTTP/1.1" 200 -
+2025-10-15 18:51:09,143 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "GET / HTTP/1.1" 200 -
+2025-10-15 18:51:09,178 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:51:09,179 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:51:09,195 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:51:09,197 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:51:09,214 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:09] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:51:13,965 - INFO - 10.110.9.121 - - [15/Oct/2025 18:51:13] "GET /api/proposicao/2372913/situacao HTTP/1.1" 200 -
+2025-10-15 18:51:58,220 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:58] "GET / HTTP/1.1" 200 -
+2025-10-15 18:51:58,280 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:58] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:51:58,484 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:58] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:51:58,673 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:58] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:51:58,826 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:58] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:51:59,157 - INFO - 127.0.0.1 - - [15/Oct/2025 18:51:59] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:52:00,310 - INFO - 127.0.0.1 - - [15/Oct/2025 18:52:00] "GET /api/proposicao/2372913/situacao HTTP/1.1" 200 -
+2025-10-15 18:53:46,134 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 18:53:46,135 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 18:53:46,139 - INFO -  * Restarting with stat
+2025-10-15 18:53:48,045 - WARNING -  * Debugger is active!
+2025-10-15 18:53:48,054 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 18:54:02,197 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:02] "GET / HTTP/1.1" 200 -
+2025-10-15 18:54:02,992 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:02] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 18:54:03,002 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:03] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 18:54:03,453 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:03] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:54:03,485 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 18:54:03,677 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:03] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 18:54:03,718 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 18:54:04,618 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 18:54:05,285 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 18:54:07,212 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 18:54:07,811 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 18:54:08,182 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 18:54:08,783 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 18:54:09,107 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 18:54:09,375 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 18:54:09,377 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:09] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:54:11,800 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:11] "GET /api/proposicao/2564763/situacao HTTP/1.1" 200 -
+2025-10-15 18:54:18,386 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:18] "GET /api/proposicao/2194396/situacao HTTP/1.1" 200 -
+2025-10-15 18:54:26,241 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:26] "GET / HTTP/1.1" 200 -
+2025-10-15 18:54:26,292 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:54:26,486 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:26] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:54:26,634 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:26] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:54:26,824 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:26] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 18:54:27,155 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:27] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 18:54:28,208 - INFO - 127.0.0.1 - - [15/Oct/2025 18:54:28] "GET /api/proposicao/2372913/situacao HTTP/1.1" 200 -
+2025-10-15 18:54:52,768 - INFO - 10.115.14.160 - - [15/Oct/2025 18:54:52] "GET /api/proposicao/2487987/situacao HTTP/1.1" 200 -
+2025-10-15 18:56:03,370 - INFO - 10.110.9.121 - - [15/Oct/2025 18:56:03] "GET /api/proposicao/2438687/situacao HTTP/1.1" 200 -
+2025-10-15 18:57:00,807 - INFO - 127.0.0.1 - - [15/Oct/2025 18:57:00] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:57:01,058 - INFO - 127.0.0.1 - - [15/Oct/2025 18:57:01] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 18:57:12,417 - INFO - 127.0.0.1 - - [15/Oct/2025 18:57:12] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:57:57,250 - INFO - 127.0.0.1 - - [15/Oct/2025 18:57:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 18:57:57,262 - INFO - 127.0.0.1 - - [15/Oct/2025 18:57:57] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-10-15 18:58:02,914 - INFO - 127.0.0.1 - - [15/Oct/2025 18:58:02] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:58:06,931 - INFO - 127.0.0.1 - - [15/Oct/2025 18:58:06] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 18:58:07,261 - INFO - 127.0.0.1 - - [15/Oct/2025 18:58:07] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:13:12,966 - INFO -  * Detected change in 'C:\\temp\\pautaplenario\\app.py', reloading
+2025-10-15 19:13:13,424 - INFO -  * Restarting with stat
+2025-10-15 19:17:55,670 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 19:17:55,670 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 19:17:55,675 - INFO -  * Restarting with stat
+2025-10-15 19:17:57,532 - WARNING -  * Debugger is active!
+2025-10-15 19:17:57,543 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 19:17:59,196 - INFO - 127.0.0.1 - - [15/Oct/2025 19:17:59] "GET / HTTP/1.1" 200 -
+2025-10-15 19:17:59,521 - INFO - 127.0.0.1 - - [15/Oct/2025 19:17:59] "GET /static/logo_pl.png HTTP/1.1" 200 -
+2025-10-15 19:17:59,602 - INFO - 127.0.0.1 - - [15/Oct/2025 19:17:59] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 19:17:59,623 - INFO - 127.0.0.1 - - [15/Oct/2025 19:17:59] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 19:17:59,792 - INFO - 127.0.0.1 - - [15/Oct/2025 19:17:59] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:18:00,020 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:00] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 19:18:00,030 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 19:18:00,120 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-10-15 19:18:00,553 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 19:18:01,691 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 19:18:01,935 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 19:18:03,929 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 19:18:04,588 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 19:18:04,922 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 19:18:05,276 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 19:18:05,888 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 19:18:06,252 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 19:18:06,253 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:06] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:18:16,633 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:16] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:18:17,774 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:17] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:18:19,052 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:19] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:18:22,364 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:22] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:18:28,264 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 19:18:28,289 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:28] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-10-15 19:18:39,205 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:39] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-10-15 19:18:44,984 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:44] "GET /?data=2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:18:45,038 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:45] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 19:18:45,238 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:45] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:18:45,360 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:45] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 19:18:45,445 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:45] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:18:45,685 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:45] "GET /static/logo_pl.png HTTP/1.1" 200 -
+2025-10-15 19:18:46,016 - INFO - 127.0.0.1 - - [15/Oct/2025 19:18:46] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-10-15 19:21:15,782 - INFO - 127.0.0.1 - - [15/Oct/2025 19:21:15] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:21:16,036 - INFO - 127.0.0.1 - - [15/Oct/2025 19:21:16] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:12,713 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 19:26:12,714 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 19:26:12,718 - INFO -  * Restarting with stat
+2025-10-15 19:26:14,725 - WARNING -  * Debugger is active!
+2025-10-15 19:26:14,736 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 19:26:15,274 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:15] "GET /?data=2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:15,665 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:15] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 19:26:15,678 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:15] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 19:26:15,826 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:15] "[36mGET /static/logo_pl.png HTTP/1.1[0m" 304 -
+2025-10-15 19:26:16,188 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-15 19:26:16,218 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:16] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:16,450 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 19:26:16,679 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 19:26:17,258 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 19:26:17,727 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 19:26:19,514 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 19:26:20,469 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 19:26:20,916 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 19:26:21,654 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 19:26:22,357 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 19:26:22,850 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 19:26:22,851 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:22] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:28,950 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:28] "GET /?data=2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:29,084 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:29] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-15 19:26:29,202 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:29] "GET /static/logo_camara.png HTTP/1.1" 200 -
+2025-10-15 19:26:29,386 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:29] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:29,695 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:29] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:29,705 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:29] "GET /static/logo_pl.png HTTP/1.1" 200 -
+2025-10-15 19:26:30,027 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-15 19:26:38,669 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:38] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:26:38,991 - INFO - 127.0.0.1 - - [15/Oct/2025 19:26:38] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:29:46,643 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.249.19:5000
+2025-10-15 19:29:46,643 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-15 19:29:46,647 - INFO -  * Restarting with stat
+2025-10-15 19:29:48,396 - WARNING -  * Debugger is active!
+2025-10-15 19:29:48,406 - INFO -  * Debugger PIN: 122-370-665
+2025-10-15 19:29:51,621 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:51] "GET / HTTP/1.1" 200 -
+2025-10-15 19:29:52,049 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 19:29:52,297 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:52] "[36mGET /static/logo_pl.png HTTP/1.1[0m" 304 -
+2025-10-15 19:29:52,307 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:52] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:29:52,314 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:52] "[36mGET /static/logo_camara.png HTTP/1.1[0m" 304 -
+2025-10-15 19:29:52,629 - INFO - evento 79805: itens na pauta = 9
+2025-10-15 19:29:52,657 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:52] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-10-15 19:29:52,844 - INFO - pareceres 2564763: candidatos PRLP/PRLE = 0
+2025-10-15 19:29:53,549 - INFO - pareceres 2194396: candidatos PRLP/PRLE = 3
+2025-10-15 19:29:53,858 - INFO - pareceres 2372913: candidatos PRLP/PRLE = 3
+2025-10-15 19:29:56,321 - INFO - pareceres 2406231: candidatos PRLP/PRLE = 8
+2025-10-15 19:29:56,714 - INFO - pareceres 2438687: candidatos PRLP/PRLE = 7
+2025-10-15 19:29:57,296 - INFO - pareceres 2454687: candidatos PRLP/PRLE = 4
+2025-10-15 19:29:57,854 - INFO - pareceres 2487987: candidatos PRLP/PRLE = 1
+2025-10-15 19:29:58,495 - INFO - pareceres 2502882: candidatos PRLP/PRLE = 2
+2025-10-15 19:29:58,961 - INFO - pareceres 2538263: candidatos PRLP/PRLE = 4
+2025-10-15 19:29:58,961 - INFO - 127.0.0.1 - - [15/Oct/2025 19:29:58] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:30:13,939 - INFO - 127.0.0.1 - - [15/Oct/2025 19:30:13] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:30:35,336 - INFO - 127.0.0.1 - - [15/Oct/2025 19:30:35] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:31:56,057 - INFO - 127.0.0.1 - - [15/Oct/2025 19:31:56] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-10-15 19:31:56,058 - INFO - 127.0.0.1 - - [15/Oct/2025 19:31:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-15 19:32:13,139 - INFO - 127.0.0.1 - - [15/Oct/2025 19:32:13] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:32:33,907 - INFO - 127.0.0.1 - - [15/Oct/2025 19:32:33] "GET /api/proposicao/2406231/situacao HTTP/1.1" 200 -
+2025-10-15 19:32:37,178 - INFO - 127.0.0.1 - - [15/Oct/2025 19:32:37] "GET /api/eventos/2025-10-15 HTTP/1.1" 200 -
+2025-10-15 19:32:37,449 - INFO - 127.0.0.1 - - [15/Oct/2025 19:32:37] "GET /api/pauta/2025-10-15 HTTP/1.1" 200 -
