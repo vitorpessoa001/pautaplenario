@@ -118,16 +118,16 @@ def _get(d, *path, default=""):
             return default
     return cur if cur is not None else default
 
-# --- helper para extrair a proposição principal do item da pauta (trata PPP) ---
+# --- helper para extrair a proposição principal do item da pauta (trata PPP e PEP) ---
 def _principal_from_item(item_raw):
     prop = _get(item_raw, "proposicao_", default={}) or {}
     relacionada = _get(item_raw, "proposicaoRelacionada_", default={}) or {}
 
     sigla_tipo = _get(prop, "siglaTipo", default="")
     cod_tipo   = _get(prop, "codTipo", default=None)
-    is_ppp     = (sigla_tipo == "PPP") or (cod_tipo == 192)
+    is_relacionada = (sigla_tipo in ["PPP", "PEP"]) or (cod_tipo in [192, 442])  # <-- Correção: inclui PEP (sigla/cod 442)
 
-    if is_ppp and relacionada:
+    if is_relacionada and relacionada:
         principal_id  = _get(relacionada, "id")
         ementa_ok     = _get(relacionada, "ementa", default="")
     else:
