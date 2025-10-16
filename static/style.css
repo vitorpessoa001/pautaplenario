@@ -74,19 +74,32 @@ body { background:#f8f9fa; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-ser
   border:1px solid #dee2e6;
 }
 
+/* Estilo para linhas mobile */
+@media (max-width: 768px) {
+  .destaque-item-mobile, .parecer-item-mobile, .procedimento-item-mobile {
+    border-left: 2px solid #dee2e6;
+    font-size: 0.78rem;
+  }
+  .destaque-item-mobile strong, .parecer-item-mobile strong, .procedimento-item-mobile strong {
+    color: #495057;
+  }
+  .text-break { word-wrap: break-word; }
+}
+
 /* Ajustes para Mobile (celular/tablet) - Fontes e boxes menores */
 @media (max-width: 768px) {
-  body { font-size: 0.82rem; }
+  body { font-size: 0.85rem; }  /* <-- Aumentado um pouquinho: de 0.82 pra 0.85rem */
   .pauta-card { font-size: 0.8rem; padding: 0.5rem; margin-bottom: 0.75rem; }
   .bloco-interno { padding: 0.5rem; margin-top: 0.25rem; }
   .proposicao-titulo { font-size: 0.82rem; }
   .bloco-interno h6 { font-size: 0.82rem; }
   .ementa { padding: 0.5rem; font-size: 0.8rem; }
-  .table { font-size: 0.72rem; }  /* <-- Reduzido mais: de 0.78rem pra 0.72rem pra melhor leitura em celular */
-  .table th, .table td { padding: 0.25rem 0.3rem; }  /* <-- Padding ainda menor nas células */
+  .table { font-size: 0.72rem; }
+  .table th, .table td { padding: 0.25rem 0.3rem; }
   .relator-tag { font-size: 0.78em; padding: 0.2rem 0.4rem; }
   .data-picker { padding: 0.5rem; }
   .data-input-compact { max-width: 100%; font-size: 0.85rem; }
   .evento-card { margin-bottom: 0.75rem; }
   .evento-card .small { font-size: 0.78em; }
+  .container { padding-left: 5px !important; padding-right: 5px !important; }  /* <-- Otimiza espaço lateral: reduz margens pra 5px */
 }
