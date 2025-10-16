@@ -5,12 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pauta do Plenário</title>
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
-
-  <!-- Bootstrap + FontAwesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-
-  <!-- Seu CSS -->
   <link href="/static/style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -20,19 +16,17 @@
     <div class="container header-wrap">
       <div class="header-logos">
         <img src="/static/logo_camara.png" alt="Logo da Câmara" class="logo"/>
-        <img src="/static/logo_pl.png" alt="Logo do Plenário" class="logo-pl mt-2" />
+        <img src="/static/logo_pl.png" alt="Logo do PL" class="logo-pl mt-2" />
       </div>
       <div class="header-text">
         <h1 class="titulo-app">Pauta do Plenário</h1>
-        <p class="subtitulo-app">Sessões Deliberativas do Plenário – Dados Abertos</p>
+        <p class="subtitulo-app">Sessões Deliberativas</p>
       </div>
     </div>
   </div>
 
   <!-- Conteúdo -->
   <div class="container my-4">
-
-    <!-- Data picker compacto -->
     <div class="data-picker">
       <div class="row align-items-end g-3">
         <div class="col-12 col-md-6 d-flex align-items-end gap-2">
@@ -46,18 +40,15 @@
             <i class="fas fa-calendar-day me-1"></i> Hoje
           </button>
         </div>
-
         <div class="col-12 col-md-6 text-end">
           <div id="lastUpdate" class="text-muted small mb-1">Atualizado em —</div>
-          <button id="btnAtualizar" class="btn btn-primary">
+          <button id="btnAtualizar" class="btn btn-primary btn-sm">
             <i class="fas fa-sync-alt me-2"></i> Atualizar
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mensagens e loading -->
-    <div id="msg" class="alert alert-info d-none"></div>
     <div id="loading" class="loading">
       <div class="spinner-border" role="status" style="width:3rem;height:3rem;">
         <span class="visually-hidden">Carregando...</span>
@@ -65,207 +56,267 @@
       <p class="mt-3">Carregando dados...</p>
     </div>
 
-    <!-- Blocos renderizados via JS -->
     <div id="eventos"></div>
     <div id="pauta"></div>
   </div>
 
   <script>
-    const dataInput   = document.getElementById('dataInput');
-    const msg         = document.getElementById('msg');
-    const loading     = document.getElementById('loading');
-    const eventosDiv  = document.getElementById('eventos');
-    const pautaDiv    = document.getElementById('pauta');
-    const btnHoje     = document.getElementById('btnHoje');
-    const btnAtualizar= document.getElementById('btnAtualizar');
+  const dataInput = document.getElementById('dataInput');
+  const loading = document.getElementById('loading');
+  const eventosDiv = document.getElementById('eventos');
+  const pautaDiv = document.getElementById('pauta');
+  const btnHoje = document.getElementById('btnHoje');
+  const btnAtualizar = document.getElementById('btnAtualizar');
 
-    const hojeISO = new Date().toISOString().split('T')[0];
-    dataInput.value = "{{ data }}";
-    if (!dataInput.value) dataInput.value = hojeISO;
+  const hojeISO = new Date().toISOString().split('T')[0];
+  dataInput.value = "{{ data }}" || hojeISO;
 
-    function setLoading(on) { loading.classList.toggle('show', !!on); }
-    function showWarn(text) {
-      msg.className = "alert alert-warning";
-      msg.textContent = text;
-      msg.classList.remove('d-none');
-    }
-    function clearMsgs() {
-      msg.classList.add('d-none');
-      msg.textContent = '';
-      eventosDiv.innerHTML = "";
-      pautaDiv.innerHTML = "";
-    }
-    function formatBR(iso) {
-      try { const [y,m,d] = iso.split("-"); return `${d}/${m}/${y}`; } catch { return iso; }
-    }
-    function badgeSituacao(sit) {
-      const s = (sit || "").toLowerCase();
-      if (s.includes("andamento")) return "bg-success";
-      if (s.includes("convoc")) return "bg-warning text-dark";
-      if (s.includes("encerr")) return "bg-secondary";
-      return "bg-info";
-    }
-    function nowBR() {
-      const d = new Date();
-      const pad = n => String(n).padStart(2,'0');
-      return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    }
+  function setLoading(on) { loading.classList.toggle('show', !!on); }
+  function nowBR() {
+    const d = new Date();
+    const p = n => String(n).padStart(2, '0');
+    return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  }
+  function badgeSituacao(s) {
+    s = (s || "").toLowerCase();
+    if (s.includes("andamento")) return "bg-success";
+    if (s.includes("convoc")) return "bg-warning text-dark";
+    if (s.includes("encerr")) return "bg-secondary";
+    return "bg-info";
+  }
 
-    function renderEventos(res, data) {
-      eventosDiv.innerHTML = '';
-      if (!res || res.erro) { showWarn(res?.erro || "Erro ao consultar eventos."); return; }
-      if (!res.tem_sessao || !res.eventos?.length) { showWarn(`Sem Sessão Deliberativa em ${formatBR(data)}.`); return; }
-      let html = '<div class="row">';
-      res.eventos.forEach(ev => {
-        html += `
-          <div class="col-12 mb-3">
-            <div class="card evento-card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <i class="fas fa-calendar-alt me-2 text-primary"></i>
-                  ${ev.descricao_tipo} (ID: ${ev.id_evento})
-                </h5>
-                <div class="small text-muted mb-2">
-                  <strong>Data/Hora:</strong> ${ev.data_hora_inicio || 'N/D'} —
-                  <strong>Situação:</strong> <span class="badge ${badgeSituacao(ev.situacao)}">${ev.situacao || 'N/D'}</span>
-                </div>
-                <div><strong>Descrição:</strong> ${ev.descricao || 'N/D'}</div>
+  function isMobile() {
+    return window.innerWidth < 768;  // Breakpoint pra mobile
+  }
+
+  function renderEventos(res, data, totalItens = 0) {
+    eventosDiv.innerHTML = '';
+    if (!res || res.erro || !res.tem_sessao || !Array.isArray(res.eventos) || !res.eventos.length) {
+      eventosDiv.innerHTML = '<div class="empty-state"><i class="fas fa-list-ul"></i><h5>Sem Sessão Deliberativa</h5></div>';
+      return;
+    }
+    const ev = res.eventos[0];
+    const palavraItem = totalItens === 1 ? 'item' : 'itens';
+    eventosDiv.innerHTML = `
+      <div class="card evento-card">
+        <div class="card-body d-flex justify-content-between align-items-center flex-wrap">
+          <div class="me-3">
+            <h6 class="mb-1"><strong>Sessão Deliberativa</strong> — ${totalItens} ${palavraItem} na pauta</h6>
+            <div class="small text-muted">
+              <strong>Data/Hora:</strong> ${ev.data_hora_inicio || 'N/D'} —
+              <strong>Situação:</strong> <span class="badge ${badgeSituacao(ev.situacao)}">${ev.situacao || 'N/D'}</span>
+              ${ev.descricao ? `<div class="mt-1"><strong>Descrição:</strong> ${ev.descricao}</div>` : ``}
+            </div>
+          </div>
+          <div class="text-muted small">ID: ${ev.id_evento}</div>
+        </div>
+      </div>`;
+  }
+
+  function renderPauta(res) {
+    pautaDiv.innerHTML = '';
+    if (!res || res.erro) {
+      pautaDiv.innerHTML = '<div class="empty-state"><i class="fas fa-list-ul"></i><h5>Sem pauta</h5></div>';
+      return;
+    }
+    if (!res.tem_pauta || !Array.isArray(res.itens) || !res.itens.length) {
+      pautaDiv.innerHTML = '<div class="empty-state"><i class="fas fa-list-ul"></i><h5>Sem pauta</h5></div>';
+      return;
+    }
+    const mobile = isMobile();
+    let html = '';
+    res.itens.forEach((item, idx) => {
+      const nItem = idx + 1;
+      const autoresArr = (item.autores?.autores || []).map(a => a.nome);
+      const autoresRendered = [...autoresArr, ...(item.autores?.tem_mais_autores ? ['e outros...'] : [])].join(', ') || 'N/D';
+      const relatorBadge = item.relator_nome ? `
+        <span class="relator-tag">
+          ${item.relator_url_foto ? `<img src="${item.relator_url_foto}" class="relator-avatar" alt="foto">` : ``}
+          <i class="fas fa-user-tie"></i>
+          Relator: ${item.relator_nome}${item.relator_sigla_partido ? ` (${item.relator_sigla_partido})` : ``}
+        </span>` : '';
+      const linkDestaques = `https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=${item.id_proposicao}`;
+      const destaquesHTML = (item.destaques_emendas || []).length > 0 ? (mobile ? 
+        item.destaques_emendas.map(d => `
+          <div class="destaque-item-mobile mb-2 p-2 bg-light rounded">
+            <strong>Número:</strong> ${d.numero || 'N/D'}<br>
+            <strong>Autoria:</strong> ${d.autoria || 'N/D'}<br>
+            <strong>Descrição:</strong> ${d.descricao || 'N/D'}<br>
+            <strong>Tipo Destaque:</strong> ${d.tipo_destaque || 'N/D'}<br>
+            <strong>Situação:</strong> <span class="badge bg-info">${d.situacao || 'N/D'}</span>
+          </div>
+        `).join('') :
+        `<div class="table-responsive">
+          <table class="table table-sm table-striped mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Autoria</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tipo Destaque</th>
+                <th scope="col">Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${item.destaques_emendas.map(d => `
+                <tr>
+                  <td><strong>${d.numero || 'N/D'}</strong></td>
+                  <td>${d.autoria || 'N/D'}</td>
+                  <td class="text-break">${d.descricao || 'N/D'}</td>
+                  <td>${d.tipo_destaque || 'N/D'}</td>
+                  <td><span class="badge bg-info">${d.situacao || 'N/D'}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>`
+      ) : `<small class="text-muted">Nenhum destaque/emenda encontrado.</small>`;
+      const psvHTML = (item.pareceres_substitutivos_votos || []).length > 0 ? (mobile ? 
+        item.pareceres_substitutivos_votos.map(p => `
+          <div class="parecer-item-mobile mb-2 p-2 bg-light rounded">
+            <strong>Tipo de Proposição:</strong> ${p.tipo_proposicao || 'N/D'}<br>
+            <strong>Data de Apresentação:</strong> ${p.data_apresentacao || 'N/D'}<br>
+            <strong>Autor:</strong> ${p.autor || 'N/D'}<br>
+            <strong>Descrição:</strong> <span class="text-break">${p.descricao || 'N/D'}</span>
+          </div>
+        `).join('') :
+        `<div class="table-responsive">
+          <table class="table table-sm table-striped mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Tipo de Proposição</th>
+                <th scope="col">Data de Apresentação</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${item.pareceres_substitutivos_votos.map(p => `
+                <tr>
+                  <td><strong>${p.tipo_proposicao || 'N/D'}</strong></td>
+                  <td>${p.data_apresentacao || 'N/D'}</td>
+                  <td>${p.autor || 'N/D'}</td>
+                  <td class="text-break">${p.descricao || 'N/D'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>`
+      ) : `<small class="text-muted">Nenhum parecer PRLP/PRLE encontrado.</small>`;
+      const procsHTML = (item.procedimentos || []).length > 0 ? (mobile ? 
+        item.procedimentos.map(p => `
+          <div class="procedimento-item-mobile mb-2 p-2 bg-light rounded">
+            <strong>Número:</strong> REQ ${p.numero || 'N/D'}<br>
+            <strong>Autoria:</strong> ${p.autoria || 'N/D'}<br>
+            <strong>Descrição:</strong> <span class="text-break">${p.descricao || 'N/D'}</span><br>
+            <strong>Situação:</strong> <span class="badge bg-info">${p.situacao || 'N/D'}</span><br>
+            <strong>Data:</strong> ${p.data || 'N/D'}
+          </div>
+        `).join('') :
+        `<div class="table-responsive">
+          <table class="table table-sm table-striped mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Autoria</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Situação</th>
+                <th scope="col">Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${item.procedimentos.map(p => `
+                <tr>
+                  <td><strong>REQ ${p.numero || 'N/D'}</strong></td>
+                  <td>${p.autoria || 'N/D'}</td>
+                  <td class="text-break">${p.descricao || 'N/D'}</td>
+                  <td><span class="badge bg-info">${p.situacao || 'N/D'}</span></td>
+                  <td>${p.data || 'N/D'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>`
+      ) : `<small class="text-muted">Nenhum requerimento encontrado.</small>`;
+      const linkPareceres = (item.pareceres_substitutivos_votos && item.pareceres_substitutivos_votos[0]?.link_inteiro_teor) ?
+        item.pareceres_substitutivos_votos[0].link_inteiro_teor :
+        `https://www.camara.leg.br/proposicoesWeb/prop_pareceres_substitutivos_votos?idProposicao=${item.id_proposicao}`;
+      const linkProcs = `https://www.camara.leg.br/pplen/requerimentos-proposicao.html?codOrgao=180&codProposicao=${item.id_proposicao}`;
+      html += `
+        <div class="card pauta-card mb-3">
+          <div class="card-body">
+            <div class="pauta-header" data-bs-toggle="collapse" data-bs-target="#col-${item.id_proposicao}">
+              <h6 class="proposicao-titulo">
+                <i class="fas fa-file-alt text-primary me-2"></i>
+                Item ${nItem} — ${item.titulo || 'N/D'} — Autor: ${autoresRendered}
+                <i class="fas fa-chevron-down collapse-toggle-icon"></i>
+              </h6>
+              <div class="small text-muted d-flex justify-content-between align-items-center">
+                <span>
+                  <strong>Situação:</strong> <span id="sit-${item.id_proposicao}">${item.descricao_situacao || 'N/D'}</span>
+                  ${relatorBadge ? ` — ${relatorBadge}` : ``}
+                </span>
+                <span class="ms-auto">
+                  <small>ID: ${item.id_proposicao}</small>
+                </span>
               </div>
             </div>
-          </div>`;
-      });
-      html += '</div>';
-      eventosDiv.innerHTML = html;
-    }
 
-    function renderPauta(res) {
-      pautaDiv.innerHTML = '';
-      if (!res || res.erro) {
-        pautaDiv.innerHTML = `<div class="empty-state"><i class="fas fa-list-ul"></i><h4>Sem pauta</h4><p>${res?.erro || 'Erro ao obter pauta.'}</p></div>`;
-        return;
-      }
-      if (!res.tem_pauta || !res.itens?.length) {
-        pautaDiv.innerHTML = `<div class="empty-state"><i class="fas fa-list-ul"></i><h4>Sem pauta</h4><p>Não há itens na pauta para os eventos do dia.</p></div>`;
-        return;
-      }
+            <div class="collapse" id="col-${item.id_proposicao}">
+              ${item.ementa ? `
+                <div class="mb-2">
+                  <small class="text-muted d-block mb-1"><i class="fas fa-align-left me-1"></i> <strong>Ementa:</strong></small>
+                  <div class="ementa">${item.ementa}</div>
+                </div>` : ``}
 
-      let html = '<div class="row">';
-      res.itens.forEach(item => {
-        const autoresRendered = (item.autores?.autores || []).map(a => a.nome).join(', ') + (item.autores?.tem_mais_autores ? ', e outros...' : '');
-        const relatorBadge = item.relator_nome ? `
-          <span class="relator-tag">
-            ${item.relator_url_foto ? `<img src="${item.relator_url_foto}" class="relator-avatar" alt="foto"/>` : ``}
-            <i class="fas fa-user-tie"></i> Relator: ${item.relator_nome} (${item.relator_sigla_partido || 'N/D'})
-          </span>` : '';
+              <div class="bloco-interno">
+                <h6><i class="fas fa-exclamation-circle me-2 text-warning"></i>Destaques e Emendas Aglutinativas:
+                  <a href="${linkDestaques}" target="_blank" class="ms-2 text-decoration-none small">Link</a>
+                </h6>${destaquesHTML}
+              </div>
 
-        const linkDestaques = `https://www.camara.leg.br/pplen/destaques.html?codOrgao=180&codProposicao=${item.id_proposicao}`;
+              <div class="bloco-interno">
+                <h6><i class="fas fa-file-contract me-2 text-info"></i>Histórico de Pareceres, Substitutivos e Votos:
+                  <a href="${linkPareceres}" target="_blank" class="ms-2 text-decoration-none small">Link</a>
+                </h6>${psvHTML}
+              </div>
 
-        const destaques = (item.destaques_emendas || []).map(d => `
-          <div class="destaque-emenda-item">
-            <div><strong>${d.numero || 'N/D'}</strong></div>
-            <div><small><strong>Autoria:</strong> ${d.autoria || 'N/D'}</small></div>
-            <div><small><strong>Descrição:</strong> ${d.descricao || 'N/D'}</small></div>
-            <div><small><strong>Tipo:</strong> ${d.tipo_destaque || 'N/D'}</small></div>
-            <div><small><strong>Situação:</strong> ${d.situacao || 'N/D'}</small></div>
-          </div>
-        `).join('') || `<small class="text-muted">Nenhum destaque/emenda em tramitação encontrado.</small>`;
-
-        const psv = (item.pareceres_substitutivos_votos || []).map(p => `
-          <div class="parecer-item">
-            <div><strong>Tipo:</strong> ${p.tipo_proposicao || 'N/D'}</div>
-            <div><small><strong>Data:</strong> ${p.data_apresentacao || 'N/D'}</small></div>
-            <div><small><strong>Autor:</strong> ${p.autor || 'N/D'}</small></div>
-            <div><small><strong>Descrição:</strong> ${p.descricao || 'N/D'}</small></div>
-          </div>
-        `).join('') || `<small class="text-muted">Nenhum parecer PRLP/PRLE encontrado.</small>`;
-
-        html += `
-          <div class="col-12 mb-4">
-            <div class="card pauta-card">
-              <div class="card-body">
-                <div class="pauta-header" data-bs-toggle="collapse" data-bs-target="#col-${item.id_proposicao}">
-                  <h5 class="proposicao-titulo">
-                    <i class="fas fa-file-alt text-primary me-2"></i>
-                    <span class="proposicao-ident">${item.titulo || 'N/D'}</span>
-                    <span class="autores-titulo"> — Autor: ${autoresRendered || 'Não informado'}</span>
-                    <i class="fas fa-chevron-down collapse-toggle-icon"></i>
-                  </h5>
-                  <span class="id-proposicao"><i class="fas fa-hashtag me-1"></i> ${item.id_proposicao}</span>
-                </div>
-
-                <div class="collapse" id="col-${item.id_proposicao}">
-                  ${item.ementa ? `<div class="mb-3"><small class="text-muted d-block mb-1"><i class="fas fa-align-left me-1"></i> <strong>Ementa:</strong></small><div class="ementa">${item.ementa}</div></div>` : ``}
-
-                  <div class="mt-2 mb-3">
-                    ${item.regime ? `<span class="regime-tag me-2"><i class="fas fa-clock me-1"></i> ${item.regime}</span>` : ``}
-                    ${relatorBadge}
-                  </div>
-
-                  <div class="mt-2">
-                    <strong>Situação:</strong> <span id="sit-${item.id_proposicao}">${item.descricao_situacao || 'N/D'}</span><br/>
-                    <strong>Ordem:</strong> ${item.ordem || 'N/D'}
-                  </div>
-
-                  <div class="destaques-emendas-container mt-3">
-                    <h6 class="fw-bold">
-                      <i class="fas fa-exclamation-circle me-2 text-warning"></i>
-                      Destaques e Emendas Aglutinativas:
-                      <a href="${linkDestaques}" target="_blank" class="ms-2">Link</a>
-                    </h6>
-                    ${destaques}
-                  </div>
-
-                  <div class="pareceres-substitutivos-votos-container mt-3">
-                    <h6 class="fw-bold">
-                      <i class="fas fa-file-contract me-2 text-info"></i>
-                      Histórico de Pareceres, Substitutivos e Votos:
-                      ${item.pareceres_substitutivos_votos?.[0]?.link_inteiro_teor ? 
-                        `<a href="${item.pareceres_substitutivos_votos[0].link_inteiro_teor}" target="_blank" class="ms-2">Link</a>` : ``}
-                    </h6>
-                    ${psv}
-                  </div>
-
-                  <div class="procedimentos-container mt-3">
-                    <h6 class="fw-bold"><i class="fas fa-gavel me-2 text-primary"></i> Requerimentos Procedimentais:</h6>
-                    ${(item.procedimentos || []).map(p => `
-                      <div class="procedimento-item">
-                        <strong>REQ ${p.numero || 'N/D'}</strong> - ${p.descricao || 'N/D'}<br/>
-                        <small><strong>Autoria:</strong> ${p.autoria || 'N/D'} — <strong>Situação:</strong> ${p.situacao || 'N/D'} — <strong>Data:</strong> ${p.data || 'N/D'}</small>
-                      </div>
-                    `).join('') || `<small class="text-muted">Nenhum requerimento procedimental em tramitação encontrado.</small>`}
-                  </div>
-                </div>
+              <div class="bloco-interno">
+                <h6><i class="fas fa-gavel me-2 text-primary"></i>Requerimentos Procedimentais:
+                  <a href="${linkProcs}" target="_blank" class="ms-2 text-decoration-none small">Link</a>
+                </h6>${procsHTML}
               </div>
             </div>
-          </div>`;
-      });
-      html += `</div><div class="total-itens"><i class="fas fa-list me-2"></i><strong>Total: ${res.itens.length} itens na pauta</strong></div>`;
-      pautaDiv.innerHTML = html;
+          </div>
+        </div>`;
+    });
+    pautaDiv.innerHTML = html;
+  }
+
+  btnHoje.onclick = () => { dataInput.value = hojeISO; carregarTudo(); };
+  btnAtualizar.onclick = () => carregarTudo();
+  dataInput.addEventListener('change', carregarTudo);
+
+  // Recarrega layout se redimensionar tela (ex.: rotate mobile)
+  window.addEventListener('resize', () => {
+    if (document.getElementById('pauta').innerHTML) {
+      carregarTudo();  // Re-renderiza pra alternar tabela/linhas
     }
+  });
 
-    btnHoje.onclick = () => { dataInput.value = hojeISO; carregarTudo(); };
-    btnAtualizar.onclick = () => carregarTudo();
-    dataInput.addEventListener('change', carregarTudo);
-
-    async function carregarTudo() {
-      const data = dataInput.value;
-      if (!data) return;
-      setLoading(true);
-      clearMsgs();
-
-      const evRes = await fetch(`/api/eventos/${data}`).then(r => r.json()).catch(() => ({erro:"Falha ao carregar eventos"}));
-      renderEventos(evRes, data);
-
-      const pautaRes = await fetch(`/api/pauta/${data}`).then(r => r.json()).catch(() => ({erro:"Falha ao carregar pauta"}));
-      renderPauta(pautaRes);
-
-      const lu = document.getElementById('lastUpdate');
-      if (lu) lu.textContent = `Atualizado em ${nowBR()}`;
-      setLoading(false);
-    }
-
-    document.addEventListener('DOMContentLoaded', carregarTudo);
-  </script>
+  async function carregarTudo() {
+    const data = dataInput.value;
+    if (!data) return;
+    setLoading(true);
+    const evRes = await fetch(`/api/eventos/${data}`).then(r => r.json()).catch(() => ({ erro: "Falha ao carregar eventos" }));
+    const pautaRes = await fetch(`/api/pauta/${data}`).then(r => r.json()).catch(() => ({ erro: "Falha ao carregar pauta" }));
+    renderEventos(evRes, data, pautaRes.itens?.length || 0);
+    renderPauta(pautaRes);
+    document.getElementById('lastUpdate').textContent = `Atualizado em ${nowBR()}`;
+    setLoading(false);
+  }
+  document.addEventListener('DOMContentLoaded', carregarTudo);
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
