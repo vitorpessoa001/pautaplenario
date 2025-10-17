@@ -379,20 +379,29 @@
 
   async function loadDetails(id_proposicao) {
     if (isCancelled) return;
-    
+
+    const destaquesDiv = document.getElementById(`destaques-${id_proposicao}`);
+    const pareceresDiv = document.getElementById(`pareceres-${id_proposicao}`);
+    const procedimentosDiv = document.getElementById(`procedimentos-${id_proposicao}`);
+
+    if (!destaquesDiv || !pareceresDiv || !procedimentosDiv) {
+      console.warn(`Elementos DOM para proposição ${id_proposicao} não encontrados.`);
+      return;
+    }
+
     try {
       const [destaquesRes, pareceresRes, procedimentosRes] = await Promise.all([
-        fetch(`/api/proposicao/${id_proposicao}/destaques`).then(r => r.json()),
-        fetch(`/api/proposicao/${id_proposicao}/pareceres`).then(r => r.json()),
-        fetch(`/api/proposicao/${id_proposicao}/procedimentos`).then(r => r.json())
+        fetch(`/api/proposicao/${id_proposicao}/destaques`, { signal: abortController?.signal }).then(r => r.json()),
+        fetch(`/api/proposicao/${id_proposicao}/pareceres`, { signal: abortController?.signal }).then(r => r.json()),
+        fetch(`/api/proposicao/${id_proposicao}/procedimentos`, { signal: abortController?.signal }).then(r => r.json())
       ]);
 
       if (!isCancelled) {
-        document.getElementById(`destaques-${id_proposicao}`).innerHTML = renderDestaques(destaquesRes.destaques_emendas);
-        document.getElementById(`pareceres-${id_proposicao}`).innerHTML = renderPareceres(pareceresRes.pareceres_substitutivos_votos);
-        document.getElementById(`procedimentos-${id_proposicao}`).innerHTML = renderProcedimentos(procedimentosRes.procedimentos);
+        destaquesDiv.innerHTML = renderDestaques(destaquesRes.destaques_emendas);
+        pareceresDiv.innerHTML = renderPareceres(pareceresRes.pareceres_substitutivos_votos);
+        procedimentosDiv.innerHTML = renderProcedimentos(procedimentosRes.procedimentos);
         loadedItens++;
-        
+
         const progress = (loadedItens / totalItens) * 100;
         const palavraItem = totalItens === 1 ? 'item' : 'itens';
         updateProgress(progress, `Carregando detalhes... ${loadedItens}/${totalItens} ${palavraItem}`);
@@ -400,11 +409,11 @@
     } catch (error) {
       if (!isCancelled) {
         console.error(`Erro ao carregar detalhes para ${id_proposicao}:`, error);
-        document.getElementById(`destaques-${id_proposicao}`).innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
-        document.getElementById(`pareceres-${id_proposicao}`).innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
-        document.getElementById(`procedimentos-${id_proposicao}`).innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
+        if (destaquesDiv) destaquesDiv.innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
+        if (pareceresDiv) pareceresDiv.innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
+        if (procedimentosDiv) procedimentosDiv.innerHTML = '<small class="text-danger">Erro ao carregar.</small>';
         loadedItens++;
-        
+
         const progress = (loadedItens / totalItens) * 100;
         const palavraItem = totalItens === 1 ? 'item' : 'itens';
         updateProgress(progress, `Carregando detalhes... ${loadedItens}/${totalItens} ${palavraItem}`);
@@ -416,6 +425,7 @@
     isCancelled = true;
     if (abortController) {
       abortController.abort();
+      abortController = null; // Garante que o controlador seja resetado
     }
     showProgress(false);
     updateProgress(0, 'Carregamento cancelado pelo usuário');
@@ -429,7 +439,7 @@
   dataInput.addEventListener('change', carregarTudo);
 
   window.addEventListener('resize', () => {
-    if (document.getElementById('pauta').innerHTML) {
+    if (document.getElementById('pauta')?.innerHTML) {
       carregarTudo();
     }
   });
@@ -441,11 +451,11 @@
     errorMessage.style.display = 'none';
     loadedItens = 0;
     totalItens = 0;
-    
+
     const data = dataInput.value;
     if (!data) return;
 
-    // Inicializa controlador de abort
+    // Inicializa novo controlador de abort
     abortController = new AbortController();
     isCancelled = false;
 
@@ -464,14 +474,13 @@
         return r.json();
       });
       totalItens = pautaRes.itens?.length || 0;
-      
+
       renderEventos(evRes, data, totalItens);
       renderPauta(pautaRes);
       document.getElementById('lastUpdate').textContent = `Atualizado em ${nowBR()}`;
 
       const palavraItem = totalItens === 1 ? 'item' : 'itens';
       if (totalItens > 0) {
-        // Mantém o loading ativo enquanto inicia o progresso
         showProgress(true);
         updateProgress(0, `Carregando dados da sessão...`);
         setTimeout(() => {
@@ -480,7 +489,7 @@
         }, 10);
         const promises = pautaRes.itens.map(item => loadDetails(item.id_proposicao));
         await Promise.all(promises);
-        
+
         if (!isCancelled) {
           updateProgress(100, `Carregamento concluído! ${totalItens} ${palavraItem} processados.`);
         }
