@@ -425,7 +425,7 @@
     isCancelled = true;
     if (abortController) {
       abortController.abort();
-      abortController = null; // Garante que o controlador seja resetado
+      abortController = null;
     }
     showProgress(false);
     updateProgress(0, 'Carregamento cancelado pelo usuário');
@@ -438,11 +438,12 @@
   btnAtualizar.onclick = () => carregarTudo();
   dataInput.addEventListener('change', carregarTudo);
 
-  window.addEventListener('resize', () => {
-    if (document.getElementById('pauta')?.innerHTML) {
-      carregarTudo();
-    }
-  });
+  // Removido o evento resize para evitar recarregamento no scroll
+  // window.addEventListener('resize', () => {
+  //   if (document.getElementById('pauta')?.innerHTML) {
+  //     carregarTudo();
+  //   }
+  // });
 
   async function carregarTudo() {
     // Limpa conteúdo anterior
@@ -455,20 +456,17 @@
     const data = dataInput.value;
     if (!data) return;
 
-    // Inicializa novo controlador de abort
     abortController = new AbortController();
     isCancelled = false;
 
     setLoading(true);
 
     try {
-      // Carrega eventos
       const evRes = await fetch(`/api/eventos/${data}`, { signal: abortController.signal }).then(r => {
         if (!r.ok) throw new Error(`Erro na requisição: ${r.status}`);
         return r.json();
       });
 
-      // Carrega pauta
       const pautaRes = await fetch(`/api/pauta/${data}`, { signal: abortController.signal }).then(r => {
         if (!r.ok) throw new Error(`Erro na requisição: ${r.status}`);
         return r.json();
