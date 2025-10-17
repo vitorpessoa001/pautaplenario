@@ -504,9 +504,6 @@ def obter_pauta_por_evento(evento_id):
 
             det   = obter_detalhes_proposicao(principal_id)
             autores = obter_autores_proposicao(principal_id)
-            desta  = obter_destaques_emendas(principal_id)
-            procs  = obter_procedimentos_regimentais(principal_id)
-            psv    = obter_pareceres_substitutivos_votos(principal_id)
 
             itens.append({
                 "ordem": _get(item, "ordem", default="N/D"),
@@ -519,25 +516,10 @@ def obter_pauta_por_evento(evento_id):
                 "relator_sigla_partido": _get(item, "relator", "siglaPartido", default=""),
                 "relator_url_foto": _get(item, "relator", "urlFoto", default=""),
                 "descricao_situacao": det.get("descricao_situacao"),
-                "destaques_emendas": [
-                    {
-                        "numero": d.numero, "autoria": d.autoria, "descricao": d.descricao,
-                        "tipo_destaque": d.tipo_destaque, "situacao": d.situacao
-                    } for d in desta["destaques_emendas"]
-                ],
-                "procedimentos": [
-                    {
-                        "numero": p.numero, "autoria": p.autoria, "descricao": p.descricao,
-                        "situacao": p.situacao, "data": p.data
-                    } for p in procs["procedimentos"]
-                ],
+                "destaques_emendas": [],
+                "procedimentos": [],
                 "autores": autores,
-                "pareceres_substitutivos_votos": [
-                    {
-                        "tipo_proposicao": x.tipo_proposicao, "data_apresentacao": x.data_apresentacao,
-                        "autor": x.autor, "descricao": x.descricao, "link_inteiro_teor": x.link_inteiro_teor
-                    } for x in psv["pareceres_substitutivos_votos"]
-                ],
+                "pareceres_substitutivos_votos": [],
             })
 
         res = {"tem_pauta": len(itens) > 0, "itens": itens, "erro": None if itens else f"Sem itens para evento {evento_id}"}
@@ -618,6 +600,57 @@ def api_proposicao_situacao(proposicao_id: int):
         return jsonify({"id": proposicao_id, "descricaoSituacao": None, "erro": f"Upstream: {e}"}), 502
     except Exception as e:
         return jsonify({"id": proposicao_id, "descricaoSituacao": None, "erro": f"Interno: {e}"}), 500
+
+# Nova rota para destaques
+@app.route("/api/proposicao/<int:id_proposicao>/destaques", methods=["GET"])
+def api_destaques(id_proposicao: int):
+    res = obter_destaques_emendas(id_proposicao)
+    return jsonify({
+        "destaques_emendas": [
+            {
+                "numero": d.numero,
+                "autoria": d.autoria,
+                "descricao": d.descricao,
+                "tipo_destaque": d.tipo_destaque,
+                "situacao": d.situacao
+            }
+            for d in res["destaques_emendas"]
+        ]
+    })
+
+# Nova rota para pareceres
+@app.route("/api/proposicao/<int:id_proposicao>/pareceres", methods=["GET"])
+def api_pareceres(id_proposicao: int):
+    res = obter_pareceres_substitutivos_votos(id_proposicao)
+    return jsonify({
+        "pareceres_substitutivos_votos": [
+            {
+                "tipo_proposicao": p.tipo_proposicao,
+                "data_apresentacao": p.data_apresentacao,
+                "autor": p.autor,
+                "descricao": p.descricao,
+                "link_inteiro_teor": p.link_inteiro_teor
+            }
+            for p in res["pareceres_substitutivos_votos"]
+        ]
+    })
+
+# Nova rota para procedimentos
+@app.route("/api/proposicao/<int:id_proposicao>/procedimentos", methods=["GET"])
+def api_procedimentos(id_proposicao: int):
+    res = obter_procedimentos_regimentais(id_proposicao)
+    return jsonify({
+        "procedimentos": [
+            {
+                "numero": p.numero,
+                "autoria": p.autoria,
+                "descricao": p.descricao,
+                "situacao": p.situacao,
+                "data": p.data
+            }
+            for p in res["procedimentos"]
+        ]
+    })
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
